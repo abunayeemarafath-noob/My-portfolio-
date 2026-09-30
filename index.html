@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Portfolio of Abu Nayeem Arafath — digital marketer, AI engineer, automation specialist, UI/UX web developer and bug hunter.">
+<meta name="theme-color" content="#0ea5e9">
+<title>Abu Nayeem Arafath — Portfolio</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script>
+  // Apply saved theme before CSS renders to avoid a flash
+  try {
+    var t = localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', t);
+  } catch (e) { document.documentElement.setAttribute('data-theme', 'light'); }
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  --blue:#0ea5e9;
+  --blue-dark:#0284c7;
+  --cyan:#22d3ee;
+  --bg:#f7fafe;
+  --bg-alt:#eef6ff;
+  --card:#ffffff;
+  --card-alt:#f4f9ff;
+  --text:#0b2239;
+  --text-soft:#3b5471;
+  --muted:#6b829c;
+  --line:#e0eaf5;
+  --line-strong:#c7dcf0;
+  --red:#ef4444;
+  --green:#10b981;
+  --ink:#0a2540;
+  --radius:16px;
+  --radius-sm:10px;
+  --radius-lg:24px;
+  --shadow:0 4px 16px -6px rgba(15,60,120,.12);
+  --shadow-lg:0 20px 50px -25px rgba(15,60,120,.25);
+  --speed:.25s;
+}
+
+[data-theme="dark"]{
+  --blue:#38bdf8;
+  --blue-dark:#0ea5e9;
+  --cyan:#22d3ee;
+  --bg:#060f1c;
+  --bg-alt:#0b1a2c;
+  --card:#0f2036;
+  --card-alt:#152a44;
+  --text:#e8f1fb;
+  --text-soft:#b3c8de;
+  --muted:#7d94ad;
+  --line:#1a3450;
+  --line-strong:#2a4a6d;
+  --red:#f87171;
+  --green:#34d399;
+  --ink:#03090f;
+  --shadow:0 4px 16px -6px rgba(0,0,0,.4);
+  --shadow-lg:0 20px 50px -25px rgba(0,0,0,.6);
+}
+
+html{scroll-behavior:smooth;scroll-padding-top:90px;-webkit-text-size-adjust:100%}
+
+body{
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+  overflow-x:hidden;
+  transition:background var(--speed),color var(--speed);
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ---------- background glow ---------- */
+.bg-glow{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.bg-glow::before,
+.bg-glow::after{content:"";position:absolute;border-radius:50%;filter:blur(120px);opacity:.5}
+.bg-glow::before{width:520px;height:520px;background:var(--blue);top:-180px;left:-160px}
+.bg-glow::after{width:480px;height:480px;background:var(--cyan);bottom:-200px;right:-160px}
+
+/* ---------- utility ---------- */
+.skip-link{
+  position:fixed;top:-100px;left:16px;z-index:1000;
+  background:var(--blue);color:#fff;padding:10px 18px;
+  border-radius:100px;text-decoration:none;font-weight:600;font-size:14px;
+  transition:top var(--speed);
+}
+.skip-link:focus{top:16px}
+
+.sr-only{
+  position:absolute;width:1px;height:1px;overflow:hidden;
+  clip:rect(0,0,0,0);white-space:nowrap;
+}
+
+/* ---------- reading progress ---------- */
+.read-bar{
+  position:fixed;top:0;left:0;height:3px;width:100%;
+  background:linear-gradient(90deg,var(--blue),var(--cyan));
+  transform:scaleX(0);transform-origin:0 50%;z-index:900;
+}
+
+/* ---------- nav ---------- */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:800;
+  padding:18px 24px;
+  transition:padding var(--speed);
+}
+.nav.shrink{padding:10px 24px}
+.nav-inner{
+  max-width:1140px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:20px;padding:12px 20px;
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:100px;
+  box-shadow:var(--shadow);
+}
+.brand{
+  font-weight:700;font-size:20px;color:var(--text);
+  text-decoration:none;letter-spacing:-.02em;flex-shrink:0;
+}
+.brand span{color:var(--blue)}
+
+.nav-list{display:flex;list-style:none;gap:4px;align-items:center}
+.nav-list a{
+  display:block;padding:8px 16px;border-radius:100px;
+  color:var(--text-soft);text-decoration:none;
+  font-size:14px;font-weight:500;
+  transition:color var(--speed),background var(--speed);
+}
+.nav-list a:hover{color:var(--text);background:var(--card-alt)}
+.nav-list a.on{color:#fff;background:var(--blue)}
+
+.nav-tools{display:flex;gap:8px;align-items:center}
+
+.btn-icon{
+  width:40px;height:40px;border-radius:100px;
+  background:var(--card-alt);border:1px solid var(--line);
+  color:var(--text);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  font-size:15px;transition:background var(--speed),color var(--speed),border-color var(--speed);
+}
+.btn-icon:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
+
+.burger{display:none}
+
+/* ---------- hero ---------- */
+.hero{
+  max-width:1140px;margin:0 auto;
+  padding:150px 24px 80px;
+  text-align:center;
+}
+.avail{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:6px 14px 6px 10px;
+  background:var(--card);border:1px solid var(--line);
+  border-radius:100px;font-size:13px;color:var(--text-soft);
+  margin-bottom:24px;box-shadow:var(--shadow);
+}
+.avail::before{
+  content:"";width:8px;height:8px;border-radius:50%;
+  background:var(--green);
+}
+.hero h1{
+  font-size:clamp(2rem,5vw,3.6rem);
+  font-weight:700;letter-spacing:-.03em;line-height:1.1;
+  margin-bottom:12px;word-break:keep-all;
+}
+.hero h1 strong{
+  color:var(--blue);
+  background:linear-gradient(90deg,var(--blue-dark),var(--cyan));
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.hero .tagline{
+  font-size:clamp(1rem,2.4vw,1.35rem);
+  color:var(--text-soft);min-height:1.6em;
+  margin-bottom:14px;font-weight:500;
+}
+.hero .tagline b{color:var(--text);font-weight:600}
+.cursor{
+  display:inline-block;width:2px;height:1.1em;
+  background:var(--blue);vertical-align:-2px;margin-left:2px;
+  animation:blink 1s steps(1) infinite;
+}
+@keyframes blink{50%{opacity:0}}
+
+.hero p.lead{
+  max-width:600px;margin:0 auto 32px;
+  color:var(--muted);font-size:1.05rem;
+}
+
+.clock{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 18px;margin-bottom:28px;
+  background:var(--card);border:1px solid var(--line);
+  border-radius:100px;font-size:14px;color:var(--text-soft);
+  box-shadow:var(--shadow);
+}
+.clock i{color:var(--blue)}
+.clock strong{
+  color:var(--text);font-family:'JetBrains Mono',monospace;
+  font-weight:500;
+}
+
+.hero-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:13px 26px;border-radius:100px;
+  font-family:inherit;font-size:15px;font-weight:600;
+  text-decoration:none;cursor:pointer;border:1.5px solid transparent;
+  transition:transform var(--speed),background var(--speed),box-shadow var(--speed),border-color var(--speed),color var(--speed);
+}
+.btn-solid{
+  background:var(--blue);color:#fff;
+  box-shadow:0 10px 25px -12px rgba(14,165,233,.7);
+}
+.btn-solid:hover{background:var(--blue-dark);transform:translateY(-2px)}
+.btn-ghost{
+  background:var(--card);color:var(--text);border-color:var(--line);
+}
+.btn-ghost:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-2px)}
+.btn:disabled{opacity:.6;cursor:not-allowed;transform:none}
+
+/* ---------- sections ---------- */
+.section{padding:90px 24px;position:relative}
+.section.alt{background:var(--bg-alt)}
+
+.wrap{max-width:1140px;margin:0 auto}
+
+.head{text-align:center;margin-bottom:56px}
+.kicker{
+  display:inline-block;font-size:11px;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;
+  color:var(--blue);margin-bottom:12px;
+}
+.head h2{
+  font-size:clamp(1.7rem,3.6vw,2.4rem);
+  font-weight:700;letter-spacing:-.025em;line-height:1.15;
+  margin-bottom:10px;
+}
+.head p{color:var(--muted);max-width:520px;margin:0 auto}
+
+/* ---------- about ---------- */
+.about{max-width:820px;margin:0 auto;text-align:center;font-size:1.06rem;color:var(--text-soft);line-height:1.85}
+.about p+p{margin-top:14px}
+
+.facts{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:14px;margin-top:36px;
+}
+.fact{
+  padding:20px;background:var(--card);
+  border:1px solid var(--line);border-radius:var(--radius);
+  text-align:left;box-shadow:var(--shadow);
+  transition:transform var(--speed),border-color var(--speed);
+}
+.fact:hover{transform:translateY(-3px);border-color:var(--blue)}
+.fact i{color:var(--blue);font-size:18px;margin-bottom:10px;display:block}
+.fact h4{font-size:14px;margin-bottom:4px}
+.fact p{font-size:13px;color:var(--muted);line-height:1.5}
+
+/* ---------- skills ---------- */
+.skills{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:20px;
+}
+.skill{
+  background:var(--card);border:1px solid var(--line);
+  border-radius:var(--radius-lg);padding:30px 26px;
+  box-shadow:var(--shadow);
+  transition:transform var(--speed),border-color var(--speed),box-shadow var(--speed);
+}
+.skill:hover{transform:translateY(-4px);border-color:var(--blue);box-shadow:var(--shadow-lg)}
+.skill .ico{
+  width:52px;height:52px;border-radius:14px;
+  background:var(--card-alt);color:var(--blue);
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;margin-bottom:18px;
+  transition:background var(--speed),color var(--speed);
+}
+.skill:hover .ico{background:var(--blue);color:#fff}
+.skill h3{font-size:17px;font-weight:700;margin-bottom:8px;letter-spacing:-.01em}
+.skill p{font-size:14px;color:var(--muted);line-height:1.65}
+
+.skill.bug .ico{background:#fef3c7;color:#d97706}
+.skill.bug:hover .ico{background:#d97706;color:#fff}
+.skill.bug:hover{border-color:#d97706}
+[data-theme="dark"] .skill.bug .ico{background:rgba(217,119,6,.15)}
+
+/* ---------- projects ---------- */
+.projects{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:20px;
+}
+.proj{
+  background:var(--card);border:1px solid var(--line);
+  border-radius:var(--radius-lg);padding:26px;
+  display:flex;flex-direction:column;
+  box-shadow:var(--shadow);
+  transition:transform var(--speed),border-color var(--speed),box-shadow var(--speed);
+}
+.proj:hover{transform:translateY(-4px);border-color:var(--blue);box-shadow:var(--shadow-lg)}
+.proj-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:18px}
+.proj-top .ico{
+  width:48px;height:48px;border-radius:12px;
+  background:linear-gradient(135deg,var(--blue),var(--cyan));
+  color:#fff;display:flex;align-items:center;justify-content:center;
+  font-size:18px;
+}
+.proj-top .go{
+  width:34px;height:34px;border-radius:50%;
+  background:var(--card-alt);border:1px solid var(--line);
+  color:var(--muted);
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;transition:background var(--speed),color var(--speed),border-color var(--speed);
+}
+.proj:hover .go{background:var(--blue);color:#fff;border-color:var(--blue)}
+.proj h3{font-size:17px;font-weight:700;margin-bottom:6px}
+.proj p{font-size:14px;color:var(--muted);line-height:1.6;flex:1;margin-bottom:16px}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chips span{
+  padding:4px 12px;border-radius:100px;
+  background:var(--card-alt);border:1px solid var(--line);
+  color:var(--blue-dark);font-size:12px;font-weight:600;
+}
+[data-theme="dark"] .chips span{color:var(--blue)}
+
+/* ---------- contact ---------- */
+.contact{max-width:620px;margin:0 auto}
+.form{
+  background:var(--card);padding:36px 32px;
+  border:1px solid var(--line);border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-lg);
+}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{margin-bottom:18px;position:relative}
+.field label{
+  display:block;font-size:13px;font-weight:600;
+  color:var(--text-soft);margin-bottom:6px;
+}
+.field input,
+.field textarea{
+  width:100%;padding:12px 14px;
+  border:1.5px solid var(--line);border-radius:var(--radius-sm);
+  background:var(--bg);color:var(--text);
+  font-family:inherit;font-size:14px;
+  transition:border-color var(--speed),background var(--speed);
+}
+.field input:focus,
+.field textarea:focus{
+  outline:none;border-color:var(--blue);background:var(--card);
+}
+.field textarea{resize:vertical;min-height:130px}
+.field input[aria-invalid="true"],
+.field textarea[aria-invalid="true"]{border-color:var(--red)}
+
+.field .msg{
+  display:block;font-size:12px;color:var(--red);
+  min-height:14px;margin-top:4px;font-weight:500;
+}
+
+.tally{
+  position:absolute;right:10px;bottom:38px;
+  padding:2px 8px;border-radius:100px;
+  background:var(--bg);color:var(--muted);
+  font-size:11px;font-weight:600;
+  font-family:'JetBrains Mono',monospace;
+  pointer-events:none;
+}
+
+/* captcha */
+.captcha{
+  display:flex;align-items:center;gap:14px;
+  padding:16px;margin-bottom:18px;
+  background:var(--card-alt);border:1.5px dashed var(--line-strong);
+  border-radius:var(--radius-sm);
+  transition:border-color var(--speed),border-style var(--speed),background var(--speed);
+}
+.captcha.ok{border-style:solid;border-color:var(--green)}
+.captcha.bad{border-color:var(--red)}
+.captcha .shield{
+  width:40px;height:40px;border-radius:10px;flex-shrink:0;
+  background:var(--blue);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:16px;
+}
+.captcha.ok .shield{background:var(--green)}
+.captcha.bad .shield{background:var(--red)}
+.captcha .info{flex:1;min-width:0}
+.captcha .tag{
+  font-size:10px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--blue);margin-bottom:2px;
+}
+.captcha .q{
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+  font-weight:600;font-size:15px;
+}
+.captcha .q b{
+  font-family:'JetBrains Mono',monospace;font-weight:600;
+  background:var(--card);border:1px solid var(--line);
+  padding:2px 10px;border-radius:6px;font-size:14px;
+}
+.captcha .q .op{color:var(--blue)}
+.captcha input{
+  width:70px;padding:8px 10px;text-align:center;
+  font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:600;
+  border:1.5px solid var(--line);border-radius:8px;
+  background:var(--card);color:var(--text);
+}
+.captcha input:focus{outline:none;border-color:var(--blue)}
+.captcha input[aria-invalid="true"]{border-color:var(--red)}
+.captcha .refresh{
+  width:36px;height:36px;border-radius:50%;
+  background:var(--card);border:1px solid var(--line);
+  color:var(--text-soft);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:transform var(--speed),color var(--speed),border-color var(--speed);
+}
+.captcha .refresh:hover{color:var(--blue);border-color:var(--blue);transform:rotate(180deg)}
+
+.captcha-msg{display:block;color:var(--red);font-size:12px;min-height:16px;margin-top:-14px;margin-bottom:10px;font-weight:500}
+
+.form .btn{width:100%;justify-content:center;padding:14px;font-size:15px;margin-top:4px}
+
+.status{
+  margin-top:14px;text-align:center;
+  font-size:14px;font-weight:600;color:var(--muted);
+  min-height:0;
+}
+.status.ok{color:var(--green)}
+.status.bad{color:var(--red)}
+
+.contact-alt{
+  display:flex;justify-content:center;margin-top:28px;
+}
+.contact-alt a{
+  display:inline-flex;align-items:center;gap:12px;
+  padding:14px 22px;background:var(--card);
+  border:1px solid var(--line);border-radius:var(--radius);
+  text-decoration:none;color:inherit;
+  box-shadow:var(--shadow);
+  transition:transform var(--speed),border-color var(--speed);
+}
+.contact-alt a:hover{transform:translateY(-2px);border-color:var(--blue)}
+.contact-alt .ico{
+  width:40px;height:40px;border-radius:10px;
+  background:var(--card-alt);color:var(--blue);
+  display:flex;align-items:center;justify-content:center;
+  font-size:15px;flex-shrink:0;
+}
+.contact-alt small{
+  display:block;font-size:11px;font-weight:600;
+  color:var(--muted);letter-spacing:.05em;text-transform:uppercase;
+}
+.contact-alt strong{
+  font-size:14px;color:var(--text);font-weight:600;
+  word-break:break-all;
+}
+
+/* ---------- footer ---------- */
+.foot{
+  background:var(--ink);color:#cbd8e8;
+  padding:36px 24px;text-align:center;
+  font-size:14px;
+}
+.foot strong{color:#fff;font-weight:600}
+
+/* ---------- to top ---------- */
+.top{
+  position:fixed;bottom:22px;right:22px;
+  width:46px;height:46px;border-radius:50%;
+  background:var(--blue);color:#fff;border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  font-size:15px;z-index:700;
+  opacity:0;pointer-events:none;transform:translateY(10px);
+  transition:opacity var(--speed),transform var(--speed);
+  box-shadow:0 10px 30px -10px rgba(14,165,233,.8);
+}
+.top.show{opacity:1;pointer-events:auto;transform:translateY(0)}
+.top:hover{background:var(--blue-dark)}
+
+/* ---------- mobile ---------- */
+@media (max-width:820px){
+  .nav{padding:12px 16px}
+  .nav.shrink{padding:8px 16px}
+  .nav-inner{padding:10px 16px}
+  .burger{display:flex}
+
+  .nav-list{
+    position:absolute;left:16px;right:16px;top:calc(100% + 6px);
+    flex-direction:column;align-items:stretch;gap:4px;
+    background:var(--card);border:1px solid var(--line);
+    border-radius:var(--radius);padding:12px;
+    box-shadow:var(--shadow-lg);
+    opacity:0;visibility:hidden;transform:translateY(-8px);
+    transition:opacity var(--speed),transform var(--speed),visibility var(--speed);
+    pointer-events:none;
+  }
+  .nav-list.open{opacity:1;visibility:visible;transform:none;pointer-events:auto}
+  .nav-list a{padding:12px 16px;text-align:center}
+
+  .hero{padding:120px 20px 60px}
+  .section{padding:70px 20px}
+  .head{margin-bottom:40px}
+  .row{grid-template-columns:1fr}
+  .form{padding:26px 20px}
+  .facts{grid-template-columns:1fr 1fr}
+  .skills{grid-template-columns:1fr 1fr}
+  .skill{padding:24px 20px}
+}
+
+@media (max-width:520px){
+  .facts{grid-template-columns:1fr}
+  .skills{grid-template-columns:1fr}
+  .hero-actions{flex-direction:column}
+  .hero-actions .btn{justify-content:center;width:100%}
+  .captcha{flex-wrap:wrap}
+}
+
+::selection{background:var(--blue);color:#fff}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--line-strong);border-radius:10px;border:2px solid var(--bg)}
+::-webkit-scrollbar-thumb:hover{background:var(--blue)}
+</style>
+</head>
+<body>
+
+<div class="bg-glow" aria-hidden="true"></div>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="read-bar" id="readBar" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#home" class="brand" data-link>AN<span>.</span></a>
+    <ul class="nav-list" id="navList">
+      <li><a href="#home" data-link>Home</a></li>
+      <li><a href="#about" data-link>About</a></li>
+      <li><a href="#skills" data-link>Skills</a></li>
+      <li><a href="#projects" data-link>Projects</a></li>
+      <li><a href="#contact" data-link>Contact</a></li>
+    </ul>
+    <div class="nav-tools">
+      <button class="btn-icon" id="themeBtn" type="button" aria-label="Toggle theme">
+        <i class="fas fa-moon"></i>
+      </button>
+      <button class="btn-icon burger" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navList">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<section id="home" class="hero">
+  <div class="avail">Available for freelance work</div>
+  <h1>Hi, I'm <strong>Abu Nayeem Arafath</strong></h1>
+  <p class="tagline"><b id="typed">Digital Marketer</b><span class="cursor"></span></p>
+  <p class="lead">I grow brands, build AI tools, automate workflows, design clean websites — and hunt the bugs that hide in between.</p>
+  <div class="clock">
+    <i class="fas fa-clock"></i>
+    <strong id="clockTime">--:--:--</strong>
+    <span id="clockZone">Local</span>
+  </div>
+  <div class="hero-actions">
+    <a href="#projects" class="btn btn-solid" data-link><i class="fas fa-rocket"></i> View My Work</a>
+    <a href="#contact" class="btn btn-ghost" data-link><i class="fas fa-paper-plane"></i> Contact Me</a>
+  </div>
+</section>
+
+<section id="about" class="section alt">
+  <div class="wrap">
+    <div class="head">
+      <span class="kicker">About</span>
+      <h2>A little bit about me</h2>
+      <p>Where strategy meets craft</p>
+    </div>
+    <div class="about">
+      <p>I work across digital marketing, AI engineering, automation and UI/UX web development. I like building useful tools and creating clean, fast, user-friendly experiences.</p>
+      <p>I also spend a lot of time hunting bugs — tracing weird edge cases, testing things that shouldn't break, and making sure what ships actually works.</p>
+    </div>
+    <div class="facts">
+      <div class="fact"><i class="fas fa-bolt"></i><h4>Fast Delivery</h4><p>Ship quality work on schedule, every single time.</p></div>
+      <div class="fact"><i class="fas fa-bullseye"></i><h4>Goal Driven</h4><p>Focused on measurable outcomes that matter.</p></div>
+      <div class="fact"><i class="fas fa-infinity"></i><h4>Always Learning</h4><p>Constantly picking up new tools and techniques.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="section">
+  <div class="wrap">
+    <div class="head">
+      <span class="kicker">Expertise</span>
+      <h2>What I do</h2>
+      <p>Six areas I love working in</p>
+    </div>
+    <div class="skills">
+      <div class="skill"><div class="ico"><i class="fas fa-bullhorn"></i></div><h3>Digital Marketing</h3><p>SEO, social media, ads and growth strategies that actually convert.</p></div>
+      <div class="skill"><div class="ico"><i class="fas fa-robot"></i></div><h3>AI Engineering</h3><p>AI models, LLM integrations and smart tools for real problems.</p></div>
+      <div class="skill"><div class="ico"><i class="fas fa-gears"></i></div><h3>Automation</h3><p>End-to-end workflow automation with n8n, Make and custom scripts.</p></div>
+      <div class="skill"><div class="ico"><i class="fas fa-palette"></i></div><h3>UI / UX Design</h3><p>Clean, modern and user-friendly interfaces with real polish.</p></div>
+      <div class="skill"><div class="ico"><i class="fas fa-code"></i></div><h3>Web Development</h3><p>Fast, responsive websites and web apps built to last.</p></div>
+      <div class="skill bug"><div class="ico"><i class="fas fa-bug"></i></div><h3>Bug Hunting</h3><p>Tracking down tricky bugs, edge cases and security holes before they ship.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="section alt">
+  <div class="wrap">
+    <div class="head">
+      <span class="kicker">Portfolio</span>
+      <h2>Recent projects</h2>
+      <p>A few things I've been building lately</p>
+    </div>
+    <div class="projects">
+      <article class="proj">
+        <div class="proj-top"><div class="ico"><i class="fas fa-robot"></i></div><div class="go"><i class="fas fa-arrow-right"></i></div></div>
+        <h3>AI Chat Bot</h3>
+        <p>An AI-powered chatbot for customer support automation.</p>
+        <div class="chips"><span>Python</span><span>OpenAI</span><span>Node.js</span></div>
+      </article>
+      <article class="proj">
+        <div class="proj-top"><div class="ico"><i class="fas fa-gears"></i></div><div class="go"><i class="fas fa-arrow-right"></i></div></div>
+        <h3>Workflow Automation</h3>
+        <p>Automated lead capture, CRM sync and email sequences with n8n and webhooks.</p>
+        <div class="chips"><span>n8n</span><span>Webhooks</span><span>Zapier</span></div>
+      </article>
+      <article class="proj">
+        <div class="proj-top"><div class="ico"><i class="fas fa-diagram-project"></i></div><div class="go"><i class="fas fa-arrow-right"></i></div></div>
+        <h3>Make Integration Suite</h3>
+        <p>Multi-step automation flows connecting Slack, Notion, Gmail and Airtable.</p>
+        <div class="chips"><span>Make</span><span>Airtable</span><span>Slack API</span></div>
+      </article>
+      <article class="proj">
+        <div class="proj-top"><div class="ico"><i class="fas fa-chart-line"></i></div><div class="go"><i class="fas fa-arrow-right"></i></div></div>
+        <h3>Marketing Dashboard</h3>
+        <p>Analytics dashboard for tracking campaign performance in real time.</p>
+        <div class="chips"><span>React</span><span>API</span><span>Chart.js</span></div>
+      </article>
+      <article class="proj">
+        <div class="proj-top"><div class="ico"><i class="fas fa-palette"></i></div><div class="go"><i class="fas fa-arrow-right"></i></div></div>
+        <h3>UI Kit</h3>
+        <p>A clean UI component library for modern web apps.</p>
+        <div class="chips"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+      </article>
+      <article class="proj">
+        <div class="proj-top"><div class="ico"><i class="fas fa-bug"></i></div><div class="go"><i class="fas fa-arrow-right"></i></div></div>
+        <h3>Bug Tracker</h3>
+        <p>A lightweight issue tracker for logging, tagging and resolving bugs fast.</p>
+        <div class="chips"><span>JavaScript</span><span>IndexedDB</span><span>CSS</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="section">
+  <div class="wrap">
+    <div class="head">
+      <span class="kicker">Contact</span>
+      <h2>Get in touch</h2>
+      <p>Have a project or question? Send me a message.</p>
+    </div>
+    <div class="contact">
+      <form class="form" id="contactForm" novalidate>
+        <div class="row">
+          <div class="field">
+            <label for="fName">Your name</label>
+            <input id="fName" name="name" type="text" placeholder="John Doe" autocomplete="name" maxlength="80" required>
+            <span class="msg"></span>
+          </div>
+          <div class="field">
+            <label for="fEmail">Your email</label>
+            <input id="fEmail" name="email" type="email" placeholder="john@example.com" autocomplete="email" maxlength="120" required>
+            <span class="msg"></span>
+          </div>
+        </div>
+        <div class="field">
+          <label for="fSubject">Subject</label>
+          <input id="fSubject" name="subject" type="text" placeholder="Project inquiry" maxlength="120" required>
+          <span class="msg"></span>
+        </div>
+        <div class="field">
+          <label for="fMsg">Your message</label>
+          <textarea id="fMsg" name="message" rows="5" placeholder="Tell me about your project…" maxlength="500" required></textarea>
+          <span class="tally" id="tally">0/500</span>
+          <span class="msg"></span>
+        </div>
+
+        <div class="captcha" id="captcha">
+          <div class="shield"><i class="fas fa-shield-halved"></i></div>
+          <div class="info">
+            <div class="tag">Security check</div>
+            <div class="q">
+              <b id="capA">0</b>
+              <span class="op" id="capOp">+</span>
+              <b id="capB">0</b>
+              <span>=</span>
+              <label class="sr-only" for="capAnswer">Answer</label>
+              <input id="capAnswer" type="text" inputmode="numeric" autocomplete="off" maxlength="4" required>
+            </div>
+          </div>
+          <button type="button" class="refresh" id="capNew" aria-label="New challenge"><i class="fas fa-rotate-right"></i></button>
+        </div>
+        <span class="captcha-msg" id="capMsg"></span>
+
+        <button type="submit" class="btn btn-solid" id="sendBtn"><i class="fas fa-paper-plane"></i> Send Message</button>
+        <p class="status" id="status" role="status" aria-live="polite"></p>
+      </form>
+
+      <div class="contact-alt">
+        <a href="mailto:abunayeemarafath@gmail.com">
+          <div class="ico"><i class="fas fa-envelope"></i></div>
+          <div>
+            <small>Email</small>
+            <strong>abunayeemarafath@gmail.com</strong>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <p>&copy; <span id="year">2026</span> <strong>Abu Nayeem Arafath</strong>. All rights reserved.</p>
+</footer>
+
+<button class="top" id="toTop" type="button" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+
+<script>
+(function () {
+  "use strict";
+
+  var EMAIL = "abunayeemarafath@gmail.com";
+  var ROLES = ["Digital Marketer","AI Engineer","Automation Specialist","UI/UX Designer","Web Developer","Bug Hunter"];
+  var $ = function (id) { return document.getElementById(id); };
+
+  // ---- year + theme ----
+  $("year").textContent = new Date().getFullYear();
+
+  var themeBtn = $("themeBtn");
+  function syncTheme() {
+    var dark = document.documentElement.getAttribute("data-theme") === "dark";
+    themeBtn.innerHTML = '<i class="fas fa-' + (dark ? "sun" : "moon") + '"></i>';
+    themeBtn.setAttribute("aria-label", dark ? "Switch to light theme" : "Switch to dark theme");
+  }
+  themeBtn.addEventListener("click", function () {
+    var next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+    syncTheme();
+  });
+  syncTheme();
+
+  // ---- mobile menu ----
+  var burger = $("burger");
+  var navList = $("navList");
+  var nav = $("nav");
+
+  burger.addEventListener("click", function (e) {
+    e.stopPropagation();
+    var open = navList.classList.toggle("open");
+    burger.setAttribute("aria-expanded", open ? "true" : "false");
+    burger.innerHTML = '<i class="fas fa-' + (open ? "xmark" : "bars") + '"></i>';
+  });
+
+  document.addEventListener("click", function (e) {
+    if (!nav.contains(e.target) && navList.classList.contains("open")) {
+      navList.classList.remove("open");
+      burger.setAttribute("aria-expanded", "false");
+      burger.innerHTML = '<i class="fas fa-bars"></i>';
+    }
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && navList.classList.contains("open")) {
+      navList.classList.remove("open");
+      burger.setAttribute("aria-expanded", "false");
+      burger.innerHTML = '<i class="fas fa-bars"></i>';
+      burger.focus();
+    }
+  });
+
+  window.addEventListener("resize", function () {
+    if (window.innerWidth > 820 && navList.classList.contains("open")) {
+      navList.classList.remove("open");
+      burger.setAttribute("aria-expanded", "false");
+      burger.innerHTML = '<i class="fas fa-bars"></i>';
+    }
+  });
+
+  // ---- smooth scroll ----
+  document.querySelectorAll("[data-link]").forEach(function (a) {
+    a.addEventListener("click", function (e) {
+      var href = a.getAttribute("href");
+      if (!href || href.charAt(0) !== "#") return;
+      var target = document.getElementById(href.slice(1));
+      if (!target) return;
+      e.preventDefault();
+      if (navList.classList.contains("open")) {
+        navList.classList.remove("open");
+        burger.setAttribute("aria-expanded", "false");
+        burger.innerHTML = '<i class="fas fa-bars"></i>';
+      }
+      var top = target.getBoundingClientRect().top + window.pageYOffset - 80;
+      window.scrollTo({ top: top, behavior: "smooth" });
+    });
+  });
+
+  // ---- scroll: bar, nav shrink, to-top, active link ----
+  var readBar = $("readBar");
+  var toTop = $("toTop");
+  var sections = document.querySelectorAll("main section[id]");
+  var navLinks = document.querySelectorAll(".nav-list a");
+  var raf = false;
+
+  function onScroll() {
+    var y = window.pageYOffset || document.documentElement.scrollTop;
+
+    nav.classList.toggle("shrink", y > 20);
+    toTop.classList.toggle("show", y > 500);
+
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    readBar.style.transform = "scaleX(" + (max > 0 ? Math.min(y / max, 1) : 0) + ")";
+
+    var current = "";
+    for (var i = 0; i < sections.length; i++) {
+      if (sections[i].offsetTop - 120 <= y) current = sections[i].id;
+    }
+    navLinks.forEach(function (a) {
+      a.classList.toggle("on", a.getAttribute("href") === "#" + current);
+    });
+
+    raf = false;
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!raf) { raf = true; requestAnimationFrame(onScroll); }
+  }, { passive: true });
+  onScroll();
+
+  toTop.addEventListener("click", function () {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  // ---- typing ----
+  var typed = $("typed");
+  var ri = 0, ci = 0, back = false;
+  function type() {
+    var word = ROLES[ri];
+    ci += back ? -1 : 1;
+    if (ci < 0) ci = 0;
+    if (ci > word.length) ci = word.length;
+    typed.textContent = word.slice(0, ci);
+    var wait = back ? 40 : 90;
+    if (!back && ci === word.length) { back = true; wait = 1400; }
+    else if (back && ci === 0) { back = false; ri = (ri + 1) % ROLES.length; wait = 300; }
+    setTimeout(type, wait);
+  }
+  type();
+
+  // ---- clock ----
+  var clockTime = $("clockTime");
+  var clockZone = $("clockZone");
+  var fmt;
+  try {
+    fmt = new Intl.DateTimeFormat([], { hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false });
+    var tz = "";
+    try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ""; } catch (e) {}
+    if (tz) {
+      var parts = tz.split("/");
+      var city = parts[parts.length - 1].replace(/_/g, " ");
+      var off = -new Date().getTimezoneOffset();
+      var s = off >= 0 ? "+" : "-";
+      var abs = Math.abs(off);
+      var hh = ("0" + Math.floor(abs / 60)).slice(-2);
+      var mm = ("0" + (abs % 60)).slice(-2);
+      clockZone.textContent = city + " · GMT" + s + hh + ":" + mm;
+    }
+  } catch (e) { fmt = null; }
+
+  function tickClock() {
+    var d = new Date();
+    clockTime.textContent = fmt ? fmt.format(d) : d.toLocaleTimeString();
+  }
+  tickClock();
+  setTimeout(function () { tickClock(); setInterval(tickClock, 1000); }, 1000 - Date.now() % 1000);
+
+  // ---- captcha ----
+  var capA = $("capA"), capB = $("capB"), capOp = $("capOp");
+  var capAnswer = $("capAnswer"), capMsg = $("capMsg"), captchaBox = $("captcha");
+  var answer = 0, attempts = 0, locked = 0;
+
+  function newCaptcha() {
+    var mul = Math.random() < 0.4;
+    var a, b, op;
+    if (mul) {
+      a = Math.floor(Math.random() * 6) + 2;
+      b = Math.floor(Math.random() * 6) + 2;
+      answer = a * b;
+      op = "×";
+    } else {
+      a = Math.floor(Math.random() * 12) + 1;
+      b = Math.floor(Math.random() * 12) + 1;
+      answer = a + b;
+      op = "+";
+    }
+    capA.textContent = a;
+    capB.textContent = b;
+    capOp.textContent = op;
+    capAnswer.value = "";
+    capAnswer.removeAttribute("aria-invalid");
+    capMsg.textContent = "";
+    captchaBox.classList.remove("ok", "bad");
+  }
+
+  function checkCaptcha() {
+    var now = Date.now();
+    if (now < locked) {
+      capMsg.textContent = "Too many tries. Wait " + Math.ceil((locked - now) / 1000) + "s.";
+      capAnswer.setAttribute("aria-invalid", "true");
+      captchaBox.classList.add("bad");
+      return false;
+    }
+    var v = capAnswer.value.trim();
+    if (!/^\d{1,4}$/.test(v)) {
+      capMsg.textContent = v ? "Numbers only." : "Please solve the check.";
+      capAnswer.setAttribute("aria-invalid", "true");
+      captchaBox.classList.remove("ok");
+      captchaBox.classList.add("bad");
+      attempts++;
+      if (attempts >= 5) { locked = now + 15000; attempts = 0; }
+      return false;
+    }
+    if (parseInt(v, 10) !== answer) {
+      attempts++;
+      if (attempts >= 5) {
+        locked = now + 15000;
+        capMsg.textContent = "Too many tries. Wait 15s.";
+        attempts = 0;
+      } else {
+        capMsg.textContent = "Wrong. " + (5 - attempts) + " left.";
+      }
+      capAnswer.setAttribute("aria-invalid", "true");
+      captchaBox.classList.remove("ok");
+      captchaBox.classList.add("bad");
+      return false;
+    }
+    capMsg.textContent = "";
+    capAnswer.removeAttribute("aria-invalid");
+    captchaBox.classList.remove("bad");
+    captchaBox.classList.add("ok");
+    attempts = 0;
+    return true;
+  }
+
+  $("capNew").addEventListener("click", function () {
+    newCaptcha();
+    capAnswer.focus();
+  });
+
+  capAnswer.addEventListener("input", function () {
+    var v = capAnswer.value.trim();
+    if (/^\d{1,4}$/.test(v) && parseInt(v, 10) === answer) {
+      capMsg.textContent = "";
+      capAnswer.removeAttribute("aria-invalid");
+      captchaBox.classList.remove("bad");
+      captchaBox.classList.add("ok");
+    } else {
+      captchaBox.classList.remove("ok");
+    }
+  });
+
+  capAnswer.addEventListener("keypress", function (e) {
+    var ch = String.fromCharCode(e.which || e.keyCode);
+    if (!/[0-9]/.test(ch)) e.preventDefault();
+  });
+
+  newCaptcha();
+
+  // ---- form ----
+  var form = $("contactForm");
+  var status = $("status");
+  var sendBtn = $("sendBtn");
+  var msgField = $("fMsg");
+  var tally = $("tally");
+  var lastSend = 0;
+
+  var fields = {
+    fName: { max: 80, bad: /[<>"'`$\\]/ },
+    fEmail: { max: 120, email: true },
+    fSubject: { max: 120, bad: /[<>"'`\\]/ },
+    fMsg: { max: 500, min: 10 }
+  };
+
+  function validate(el) {
+    var id = el.id;
+    var cfg = fields[id];
+    var v = (el.value || "").trim();
+    var err = "";
+
+    if (!v) err = "This field is required.";
+    else if (cfg.min && v.length < cfg.min) err = "At least " + cfg.min + " characters.";
+    else if (v.length > cfg.max) err = "Too long (max " + cfg.max + ").";
+    else if (cfg.email && !/^[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}$/.test(v)) err = "Enter a valid email.";
+    else if (cfg.bad && cfg.bad.test(v)) err = "Invalid characters.";
+
+    var box = el.parentElement.querySelector(".msg");
+    if (box) box.textContent = err;
+    el.setAttribute("aria-invalid", err ? "true" : "false");
+    return !err;
+  }
+
+  Object.keys(fields).forEach(function (id) {
+    var el = $(id);
+    el.addEventListener("blur", function () { validate(el); });
+    el.addEventListener("input", function () {
+      if (el.getAttribute("aria-invalid") === "true") validate(el);
+    });
+  });
+
+  msgField.addEventListener("input", function () {
+    tally.textContent = msgField.value.length + "/500";
+  });
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    if (Date.now() - lastSend < 3000) {
+      status.textContent = "Wait a moment before trying again.";
+      status.className = "status bad";
+      return;
+    }
+    lastSend = Date.now();
+
+    var firstBad = null;
+    Object.keys(fields).forEach(function (id) {
+      var el = $(id);
+      if (!validate(el) && !firstBad) firstBad = el;
+    });
+    if (firstBad) {
+      firstBad.focus();
+      status.textContent = "Please fix the highlighted fields.";
+      status.className = "status bad";
+      return;
+    }
+
+    if (!checkCaptcha()) {
+      capAnswer.focus();
+      status.textContent = "Please solve the security check.";
+      status.className = "status bad";
+      return;
+    }
+
+    var name = $("fName").value.trim().slice(0, 80);
+    var email = $("fEmail").value.trim().slice(0, 120);
+    var subject = $("fSubject").value.trim().slice(0, 120).replace(/[\r\n]/g, " ");
+    var message = msgField.value.trim().slice(0, 500);
+
+    var body = "Name: " + name + "\n" +
+               "Email: " + email + "\n\n" +
+               message;
+
+    var mailto = "mailto:" + EMAIL +
+                 "?subject=" + encodeURIComponent(subject) +
+                 "&body=" + encodeURIComponent(body);
+
+    try {
+      window.location.href = mailto;
+      status.textContent = "Opening your email app — just hit Send!";
+      status.className = "status ok";
+      form.reset();
+      tally.textContent = "0/500";
+      Object.keys(fields).forEach(function (id) {
+        var box = $(id).parentElement.querySelector(".msg");
+        if (box) box.textContent = "";
+        $(id).removeAttribute("aria-invalid");
+      });
+      newCaptcha();
+    } catch (err) {
+      status.textContent = "Could not open email app. Email me at " + EMAIL;
+      status.className = "status bad";
+    }
+  });
+
+})();
+</script>
+</body>
+</html>
